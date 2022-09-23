@@ -27,6 +27,8 @@ export default class DeviceStore {
             {id:10, name: "Iphone70", price:300, rating: 5, img: 'https://im0-tub-ru.yandex.net/i?id=1f4a56649ecde5b810ac86edaef0d574-l&ref=rim&n=13&w=640&h=640'},
             {id:11, name: "Iphone70", price:300, rating: 5, img: 'https://im0-tub-ru.yandex.net/i?id=1f4a56649ecde5b810ac86edaef0d574-l&ref=rim&n=13&w=640&h=640'},
         ]
+
+        this._selectedType = {}
         makeAutoObservable(this)
     }
 
@@ -41,7 +43,10 @@ export default class DeviceStore {
     setDevices (devices) {
         this._devices = devices
     }
- 
+    
+    setSelectedType (type) {
+        this._selectedType = type
+    }
 
     get devices () {
         return this._devices
@@ -55,5 +60,8 @@ export default class DeviceStore {
         return this._types
     }
 
+    get selectedType () {
+        return this._selectedType
+    }
 
 }
