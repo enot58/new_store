@@ -1,9 +1,12 @@
 import React from "react";
 import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
+import Rating from "../components/Rating";
 
 // Страница одного из устройств
 
 function DevicePage() {
+  
+
   const device = {
     id: 1,
     name: "Iphone20",
@@ -20,9 +23,14 @@ function DevicePage() {
     { id: 5, title: "Аккумулятор", description: "4000 mA" },
   ];
 
+
+  const selOnRate = (id, rating) => {
+    
+  }
+
   return (
     <Container>
-      <Row>
+      <Row className="mt-4">
         <Col md={4}>
           <Image width={300} height={300} src={device.img} />
         </Col>
@@ -30,7 +38,7 @@ function DevicePage() {
           <Row className="d-flex justify-content-center align-items-center">
             <h2>{device.name}</h2>
             <div className="d-flex align-items-center justify-content-center">
-              {device.rating}
+              <Rating id={device.id} rating={device.rating} onRate={selOnRate}/>
             </div>
           </Row>
         </Col>

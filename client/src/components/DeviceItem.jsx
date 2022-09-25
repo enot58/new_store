@@ -11,7 +11,7 @@ function DeviceItem({id, name, price, rating, img}) {
   console.log(navigate)
 
   return (
-    <Col md={3} onClick={() => navigate(DEVICE_ROUTE + "/" + id)}>
+    <Col  md={3} onClick={() => navigate(DEVICE_ROUTE + "/" + id)}>
       <Card style={{width: 150, cursor: "pointer", display: "flex", justifyContent: "center", margin: "5px", border: "1px solid grey"}
 
     }>

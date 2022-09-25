@@ -1,17 +1,26 @@
-import React from 'react'
-
+import React, { useContext } from 'react'
+import {Context} from ".."
 import StarRating from './StarRating';
 
 const createArray = length => [...Array(length)];
 
-function Rating({id, rating, totalRating = 5}) {
 
-    
+
+
+function Rating({id, rating, totalRating = 5 , onRate = f => f}) {
+
+    const {device} = useContext(Context)
+
+
 
   return (
     <>
         {createArray(totalRating).map((n , i) => (
-            <StarRating selected={rating > i} key={i} />
+            <StarRating
+              onClick={() => device.setSelectedRating(i)}
+              selected={rating > i} 
+              key={i} 
+            />
         ))}
     </>
   )
