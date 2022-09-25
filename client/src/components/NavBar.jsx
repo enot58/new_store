@@ -7,8 +7,17 @@ import { ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from "../utils/consts";
 import { observer } from "mobx-react-lite"
 const NavBar = observer(()=> {
   const { user } = useContext(Context);
-  console.log(user)
+  
   const navigate = useNavigate()
+
+  const panelEx = () => {
+    
+   
+    user.setIsAuth(false)
+    navigate(LOGIN_ROUTE)
+    
+  }
+
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
@@ -25,7 +34,7 @@ const NavBar = observer(()=> {
               variant={"outline-light"}
               >Админ панель</Button>
             <Button 
-              onClick={() => navigate(LOGIN_ROUTE)} 
+              onClick={() => panelEx()} 
               variant={"outline-light"} style={{marginLeft: "20px"}}
               >Выйти</Button>
           </Nav>

@@ -8,7 +8,7 @@ import StarRating from './StarRating'
 function DeviceItem({id, name, price, rating, img}) {
 
   const navigate = useNavigate()
-  console.log(navigate)
+  
 
   return (
     <Col  md={3} onClick={() => navigate(DEVICE_ROUTE + "/" + id)}>
