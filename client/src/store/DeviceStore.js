@@ -15,20 +15,21 @@ export default class DeviceStore {
             {id: 5, name: 'Huawey'},
         ]
         this._devices = [
-            {id:1, name: "Iphone20", price:300, rating: 5, img: 'https://im0-tub-ru.yandex.net/i?id=1f4a56649ecde5b810ac86edaef0d574-l&ref=rim&n=13&w=640&h=640'},
-            {id:2, name: "Iphone30", price:300, rating: 5, img: 'https://fb.ru/media/i/1/4/1/5/9/2/4/i/1415924.jpg'},
-            {id:3, name: "Iphone40", price:300, rating: 5, img: 'https://im0-tub-ru.yandex.net/i?id=1f4a56649ecde5b810ac86edaef0d574-l&ref=rim&n=13&w=640&h=640'},
-            {id:4, name: "Iphone50", price:300, rating: 5, img: 'https://im0-tub-ru.yandex.net/i?id=1f4a56649ecde5b810ac86edaef0d574-l&ref=rim&n=13&w=640&h=640'},
-            {id:5, name: "Iphone60", price:300, rating: 5, img: 'https://im0-tub-ru.yandex.net/i?id=1f4a56649ecde5b810ac86edaef0d574-l&ref=rim&n=13&w=640&h=640'},
-            {id:6, name: "Iphone70", price:300, rating: 5, img: 'https://im0-tub-ru.yandex.net/i?id=1f4a56649ecde5b810ac86edaef0d574-l&ref=rim&n=13&w=640&h=640'},
-            {id:7, name: "Iphone70", price:300, rating: 5, img: 'https://im0-tub-ru.yandex.net/i?id=1f4a56649ecde5b810ac86edaef0d574-l&ref=rim&n=13&w=640&h=640'},
-            {id:8, name: "Iphone70", price:300, rating: 5, img: 'https://im0-tub-ru.yandex.net/i?id=1f4a56649ecde5b810ac86edaef0d574-l&ref=rim&n=13&w=640&h=640'},
-            {id:9, name: "Iphone70", price:300, rating: 5, img: 'https://im0-tub-ru.yandex.net/i?id=1f4a56649ecde5b810ac86edaef0d574-l&ref=rim&n=13&w=640&h=640'},
-            {id:10, name: "Iphone70", price:300, rating: 5, img: 'https://im0-tub-ru.yandex.net/i?id=1f4a56649ecde5b810ac86edaef0d574-l&ref=rim&n=13&w=640&h=640'},
-            {id:11, name: "Iphone70", price:300, rating: 5, img: 'https://im0-tub-ru.yandex.net/i?id=1f4a56649ecde5b810ac86edaef0d574-l&ref=rim&n=13&w=640&h=640'},
+            {id:1, name: "Iphone20", price:300, rating: 2, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtsAzfAnC6Onpen3al9qVywgNwKSYY1-QxTg&usqp=CAU'},
+            {id:2, name: "Iphone30", price:300, rating: 5, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtsAzfAnC6Onpen3al9qVywgNwKSYY1-QxTg&usqp=CAU'},
+            {id:3, name: "Iphone40", price:300, rating: 3, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtsAzfAnC6Onpen3al9qVywgNwKSYY1-QxTg&usqp=CAU'},
+            {id:4, name: "Iphone50", price:300, rating: 5, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtsAzfAnC6Onpen3al9qVywgNwKSYY1-QxTg&usqp=CAU'},
+            {id:5, name: "Iphone60", price:300, rating: 3, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtsAzfAnC6Onpen3al9qVywgNwKSYY1-QxTg&usqp=CAU'},
+            {id:6, name: "Iphone70", price:300, rating: 1, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtsAzfAnC6Onpen3al9qVywgNwKSYY1-QxTg&usqp=CAU'},
+            {id:7, name: "Iphone70", price:300, rating: 5, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtsAzfAnC6Onpen3al9qVywgNwKSYY1-QxTg&usqp=CAU'},
+            {id:8, name: "Iphone70", price:300, rating: 4, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtsAzfAnC6Onpen3al9qVywgNwKSYY1-QxTg&usqp=CAU'},
+            {id:9, name: "Iphone70", price:300, rating: 5, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtsAzfAnC6Onpen3al9qVywgNwKSYY1-QxTg&usqp=CAU'},
+            {id:10, name: "Iphone70", price:300, rating: 5, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtsAzfAnC6Onpen3al9qVywgNwKSYY1-QxTg&usqp=CAU'},
+            {id:11, name: "Iphone70", price:300, rating: 5, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtsAzfAnC6Onpen3al9qVywgNwKSYY1-QxTg&usqp=CAU'},
         ]
 
         this._selectedType = {}
+        this._selectedBrand = {}
         makeAutoObservable(this)
     }
 
@@ -47,6 +48,10 @@ export default class DeviceStore {
     setSelectedType (type) {
         this._selectedType = type
     }
+    setSelectedBrand (brand) {
+        this._selectedBrand = brand
+    }
+
 
     get devices () {
         return this._devices
@@ -62,6 +67,9 @@ export default class DeviceStore {
 
     get selectedType () {
         return this._selectedType
+    }
+    get selectedBrand () {
+        return this._selectedBrand
     }
 
 }
