@@ -10,10 +10,12 @@ function CreateDevice({show, onHide}) {
     const [info, setInfo] = useState([]);
 
     const addInfo = () => {
-      setInfo([...info, {title: '', description: '', id: Date.now}])
+      setInfo([...info, {title: '', description: '', id: Date.now()}])
     }
 
-
+    const removeInfo = (id) => {
+      setInfo(info.filter((i) => i.id !== id) )
+    }
 
   return (
     <Modal
@@ -65,9 +67,7 @@ function CreateDevice({show, onHide}) {
                     </Col>
                     <Col md={4}>
                         <Button
-                          onClick={(id) => info.filter((item) => (
-                            item.id !== id
-                          ))} 
+                          onClick={() => removeInfo(item.id)} 
                           variant="outline-danger">
                             Удалить
                           </Button>
