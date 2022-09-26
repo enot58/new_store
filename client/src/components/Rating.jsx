@@ -17,7 +17,7 @@ function Rating({id, rating, totalRating = 5 , onRate = f => f}) {
     <>
         {createArray(totalRating).map((n , i) => (
             <StarRating
-              onClick={() => device.setSelectedRating(i)}
+              // onClick={() => device.setSelectedRating(i)}
               selected={rating > i} 
               key={i} 
             />

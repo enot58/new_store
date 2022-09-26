@@ -14,7 +14,7 @@ const sequelize = new Sequelize('store','root', process.env.DB_PASSWORD, {
     host: '127.0.0.1',
     port: '3306',
     define: {
-        timestamps: false
+        //timestamps: false
     }
 });
 

@@ -1,14 +1,18 @@
-import React from "react";
+import React, {useContext} from "react";
 import { useState } from "react";
 import { Button, Container, Form, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { NavLink, useLocation } from "react-router-dom";
 import { login, registration } from "../http/userAPI";
 import { LOGIN_ROUTE, REGISTRATION_ROUTE } from "../utils/consts";
+import {observer} from "mobx-react-lite";
+import {Context} from "../index";
 // Страница авторизации
 
-function Auth() {
 
+
+const Auth = observer(() => {
+  const {user} = useContext(Context)
   const location = useLocation();
   const isLogin = location.pathname === LOGIN_ROUTE;
   
@@ -16,17 +20,23 @@ function Auth() {
   const [password, setPassword] = useState('')
 
 
-
   const click = async () => {
-    if (isLogin) {
-      const response = await login()
-      console.log(response)
-    } else {
-      const  response = await registration()
-      console.log(response)
-    }
+    try {
+      let data;
 
-    
+      if (isLogin) {
+        data = await login(email, password)
+        console.log(data)
+      } else {
+        data = await registration(email, password)
+        console.log(data)
+      }
+
+      user.setUser(data)
+      user.setIsAuth(true)
+    } catch (e) {
+      alert(e.response.data.message)
+    }
   }
 
   return (
@@ -59,7 +69,7 @@ function Auth() {
                 Есть аккаунт? <NavLink to={LOGIN_ROUTE}>Войдите</NavLink>
               </div>
             }
-            <Button className="mt-3" variant={"outline-success"}>
+            <Button className="mt-3" variant={"outline-success"} onClick={click}>
               {isLogin ? "Войти" : "Зарегистрировать"}
             </Button>
           </Row>
@@ -67,6 +77,6 @@ function Auth() {
       </Card>
     </Container>
   );
-}
+})
 
 export default Auth;

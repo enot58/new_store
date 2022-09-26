@@ -13,8 +13,8 @@ const NavBar = observer(()=> {
   const panelEx = () => {
     
    
-    user.setIsAuth(false)
-    navigate(LOGIN_ROUTE)
+    user.setUser({})
+    user.isAuth(false)
     
   }
 

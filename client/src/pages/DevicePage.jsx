@@ -1,44 +1,31 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import Rating from "../components/Rating";
+import {useParams} from "react-router-dom";
+import {fetchOneDevice} from "../http/deviceAPI";
 
 // Страница одного из устройств
 
 function DevicePage() {
-  
 
-  const device = {
-    id: 1,
-    name: "Iphone20",
-    price: 300,
-    rating: 2,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtsAzfAnC6Onpen3al9qVywgNwKSYY1-QxTg&usqp=CAU",
-  };
+  const [device, setDevice] = useState({info:[]})
+  const {id} = useParams()
+  useEffect(() => {
+    fetchOneDevice(id).then(data => setDevice(data))
+  }, [])
 
-  const description = [
-    { id: 1, title: "Оперативная память", description: "5 гб" },
-    { id: 2, title: "Камера", description: "12 Мп" },
-    { id: 3, title: "Процессор", description: "Snapdragon" },
-    { id: 4, title: "Количество ядер", description: "8" },
-    { id: 5, title: "Аккумулятор", description: "4000 mA" },
-  ];
-
-
-  const selOnRate = (id, rating) => {
-    
-  }
 
   return (
     <Container>
       <Row className="mt-4">
         <Col md={4}>
-          <Image width={300} height={300} src={device.img} />
+          <Image width={300} height={300} src={process.env.REACT_APP_URL_API + device.img} />
         </Col>
         <Col md={4}>
           <Row className="d-flex justify-content-center align-items-center">
             <h2>{device.name}</h2>
             <div className="d-flex align-items-center justify-content-center">
-              <Rating id={device.id} rating={device.rating} onRate={selOnRate}/>
+              <Rating id={device.id} rating={device.rating}/>
             </div>
           </Row>
         </Col>
@@ -59,7 +46,7 @@ function DevicePage() {
       </Row>
       <Row>
         <h1>Характеристики</h1>
-        {description.map((info, index) => (
+        {device.info.map((info, index) => (
           <Row
             key={info.id}
             style={{
