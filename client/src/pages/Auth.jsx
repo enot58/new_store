@@ -1,7 +1,9 @@
 import React from "react";
+import { useState } from "react";
 import { Button, Container, Form, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { NavLink, useLocation } from "react-router-dom";
+import { login, registration } from "../http/userAPI";
 import { LOGIN_ROUTE, REGISTRATION_ROUTE } from "../utils/consts";
 // Страница авторизации
 
@@ -10,6 +12,23 @@ function Auth() {
   const location = useLocation();
   const isLogin = location.pathname === LOGIN_ROUTE;
   
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+
+
+  const click = async () => {
+    if (isLogin) {
+      const response = await login()
+      console.log(response)
+    } else {
+      const  response = await registration()
+      console.log(response)
+    }
+
+    
+  }
+
   return (
     <Container
       className="d-flex justify-content-center align-items-center"
@@ -18,8 +37,19 @@ function Auth() {
       <Card style={{ width: "600px" }}>
         <h2 className="m-auto">{isLogin ? "Авторизация" : "Регистрация"}</h2>
         <Form className="m-5 d-flex flex-column">
-          <Form.Control className="mt-3" placeholder="Введите email..." />
-          <Form.Control className="mt-3" placeholder="Введите пароль" />
+          <Form.Control 
+            className="mt-3" 
+            placeholder="Введите email..." 
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+          <Form.Control 
+            className="mt-3" 
+            placeholder="Введите пароль" 
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            type="password"
+          />
           <Row className="d-flex justify-content-between">
             {isLogin ? 
               <div>

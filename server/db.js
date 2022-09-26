@@ -6,9 +6,10 @@
 
 
 import {Sequelize} from "sequelize";
+import dotenv from 'dotenv'
+dotenv.config()
 
-
-const sequelize = new Sequelize('store','root', '28162342', {
+const sequelize = new Sequelize('store','root', process.env.DB_PASSWORD, {
     dialect: "mysql",
     host: '127.0.0.1',
     port: '3306',
