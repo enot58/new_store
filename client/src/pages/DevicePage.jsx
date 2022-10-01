@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import Rating from "../components/Rating";
 import {useParams} from "react-router-dom";
-import {fetchOneDevice} from "../http/deviceAPI";
+import {fetchOneDevice, fetchOneDeviceAuth} from "../http/deviceAPI";
 
 // Страница одного из устройств
 
@@ -12,6 +12,7 @@ function DevicePage() {
   const {id} = useParams()
   useEffect(() => {
     fetchOneDevice(id).then(data => setDevice(data))
+
   }, [])
 
 
@@ -19,7 +20,7 @@ function DevicePage() {
     <Container>
       <Row className="mt-4">
         <Col md={4}>
-          <Image width={300} height={300} src={process.env.REACT_APP_URL_API + device.img} />
+          <Image width={300} height={300} src={`${process.env.REACT_APP_URL_API}/${device.img}`} />
         </Col>
         <Col md={4}>
           <Row className="d-flex justify-content-center align-items-center">

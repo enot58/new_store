@@ -1,19 +1,28 @@
-import React, { useState } from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import { Button, Container } from 'react-bootstrap'
 import { FaGalacticSenate } from 'react-icons/fa'
 import CreateBrand from '../components/modals/CreateBrand'
 import CreateDevice from '../components/modals/CreateDevice'
 import CreateType from '../components/modals/CreateType'
+import {fetchBrand, fetchDevice, fetchTypes} from "../http/deviceAPI";
+import {observer} from "mobx-react-lite";
+import {Context} from "../index";
 
 
 
 // Страница администрирования
 
-function Admin() {
+const Admin = observer(() => {
 
+    const {device} = useContext(Context)
 const [brandVisible, setBrandVisible] = useState(false)
 const [typeVisible, setTypeVisible] = useState(false)
 const [deviceVisible, setDeviceVisible] = useState(false)
+
+    useEffect(() => {
+        fetchTypes().then(data => device.setTypes(data))
+        fetchBrand().then(data => device.setBrands(data))
+    }, [brandVisible, typeVisible])
 
 
   return (
@@ -33,9 +42,12 @@ const [deviceVisible, setDeviceVisible] = useState(false)
 
       <CreateType show = {typeVisible} onHide={() => setTypeVisible(false)}/>
       <CreateBrand show = {brandVisible}  onHide={() => setBrandVisible(false)}/>
-      <CreateDevice show = {deviceVisible} onHide={() => setDeviceVisible(false)}/>
+      <CreateDevice show = {deviceVisible} onClick={() => {
+
+
+      }} onHide={() => setDeviceVisible(false)}/>
     </Container>
   )
-}
+})
 
 export default Admin

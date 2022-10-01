@@ -22,6 +22,7 @@ class DeviceController {
             // Расположение файла с адаптацией с OS
             // Таким образом мы перемещаем файл с заданным именем в заданную директорию
             await img.mv(path.resolve('static', fileName));
+            const device = await Db.Device.create({name, price, brandId, typeId, img: fileName})
             /*
             *  Если указано инфо
             *  выполняется условие и добавляется в таблицу
@@ -36,18 +37,18 @@ class DeviceController {
                 info.forEach(i => Db.DeviceInfo.create({
                     title: i.title,
                     description: i.description,
-                    deviceId: deviceId
+                    deviceId: device.id
                 }))
             }
 
             // Далее создаём сам девайс
-            const device = await Db.Device.create({
-                name,
-                price,
-                brandId,
-                typeId,
-                img: fileName
-            });
+            // const device = await Db.Device.create({
+            //     name,
+            //     price,
+            //     brandId,
+            //     typeId,
+            //     img: fileName
+            // });
 
             return response.json(device)
         } catch (e) {

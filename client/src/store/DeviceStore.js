@@ -31,6 +31,9 @@ export default class DeviceStore {
         this._selectedType = {}
         this._selectedBrand = {}
         this._selectedRating = {}
+        this._page = 1
+        this._totalCount = 8
+        this._limit = 3
         makeAutoObservable(this)
     }
 
@@ -55,7 +58,12 @@ export default class DeviceStore {
     setSelectedRating (rating) {
         this._selectedRating = rating + 1
     }
-
+    setPage (page) {
+        this._page = page
+    }
+    setTotalCount (count) {
+        this._totalCount = count
+    }
 
 
     get devices () {
@@ -71,13 +79,25 @@ export default class DeviceStore {
     }
 
     get selectedType () {
+        this.setPage(1)
         return this._selectedType
     }
     get selectedBrand () {
+        this.setPage(1)
         return this._selectedBrand
     }
 
     get selectedRating () {
         return this._selectedRating
+    }
+
+    get page () {
+        return this._page
+    }
+    get totalCount () {
+        return this._totalCount
+    }
+    get limit () {
+        return this._limit
     }
 }

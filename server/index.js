@@ -51,7 +51,7 @@ app.use(errorHandlingMiddleware);
     await sequelize.sync().then( () => [
         app.listen(PORT, function () {
             console.log(`Сервер ожидает подключения...${PORT}`);
-            console.log(path.resolve('static'))
+            //console.log(path.resolve('static'))
         })
     ]);
 })();

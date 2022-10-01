@@ -5,17 +5,23 @@ import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from "../utils/consts";
 import { observer } from "mobx-react-lite"
+
+
 const NavBar = observer(()=> {
+
   const { user } = useContext(Context);
   
   const navigate = useNavigate()
 
   const panelEx = () => {
-    
-   
+    console.log(user.isAuth)
+    navigate(SHOP_ROUTE)
+    localStorage.removeItem('token')
     user.setUser({})
-    user.isAuth(false)
-    
+
+    user.setIsAuth(false)
+
+
   }
 
   return (

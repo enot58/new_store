@@ -20,6 +20,10 @@ export const authRoutes = [
         path: OTHER_PATH,
         Component: Shop
     },
+    {
+        path: DEVICE_ROUTE + '/:id',
+        Component: DevicePage
+    },
     
 ]
 

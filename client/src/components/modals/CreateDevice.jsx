@@ -13,7 +13,7 @@ const CreateDevice = observer(({show, onHide}) => {
     const {device} = useContext(Context);
 
     const [name, setName] = useState('')
-    const [price, setPrice] = useState(0)
+    const [price, setPrice] = useState('')
     const [file, setFile] = useState(null)
     const [info, setInfo] = useState([]);
 
@@ -34,20 +34,25 @@ const CreateDevice = observer(({show, onHide}) => {
         setInfo(info.map((newItem) => newItem.id === id ? {...newItem, [key]: value} : newItem))
     }
 
+
+
     const addDevice = () => {
-        const formData = new FormData;
+        const formData = new FormData();
         formData.append("name", name)
         formData.append("price", `${price}`)
         formData.append("img", file)
         formData.append("brandId", device.selectedBrand.id)
         formData.append("typeId", device.selectedType.id)
         formData.append("info", JSON.stringify(info))
+
+
         createDevice(formData).then(data => onHide())
 
     }
 
     const selectFile = e => {
-        setFile(e.target.files)
+        setFile(e.target.files[0])
+
     }
 
   return (
@@ -98,7 +103,7 @@ const CreateDevice = observer(({show, onHide}) => {
                     value={price}
                     onChange={e => setPrice(Number(e.target.value))}
                     type="number"
-                    lassName="mt-3" placeholder='Введите цену' />
+                    className="mt-3" placeholder='Введите цену' />
                 <hr/>
                 <Button onClick={addInfo}>Добавить новое свойство</Button>
                 {info.map((item) => (
@@ -138,4 +143,4 @@ const CreateDevice = observer(({show, onHide}) => {
   )
 })
 
-export default CreateDevice
+export default CreateDevice;
